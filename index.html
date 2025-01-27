@@ -3,19 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Library</title>
+  <title>Media Library</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Image Library</h1>
-    <p>Click on an image to copy its URL.</p>
+    <h1>Media Library</h1>
+    <p>Click on an image or video to copy its URL.</p>
   </header>
-  <main id="image-gallery">
-    <!-- Las imágenes se agregarán dinámicamente aquí -->
-  </main>
+
+  <!-- Galería de Imágenes -->
+  <section>
+    <h2>Images</h2>
+    <div id="image-gallery">
+      <!-- Las imágenes se agregarán dinámicamente aquí -->
+    </div>
+  </section>
+
+  <!-- Galería de Videos -->
+  <section>
+    <h2>Videos</h2>
+    <div id="video-gallery">
+      <!-- Los videos se agregarán dinámicamente aquí -->
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 Mi Biblioteca de Imágenes</p>
+    <p>© 2025 Mi Biblioteca de Imágenes y Videos</p>
   </footer>
   <script>
     // JavaScript para cargar automáticamente las imágenes
@@ -50,8 +64,12 @@
       "img/fondo.jpg" // Añade más imágenes aquí
     ];
 
-    const gallery = document.getElementById("image-gallery");
+    const videos = [
+      "video/video.mp4", // Añade más videos aquí
+    ];
 
+        // Galería de Imágenes
+        const imageGallery = document.getElementById("image-gallery");
     images.forEach(image => {
       const imgElement = document.createElement("img");
       imgElement.src = image;
@@ -62,12 +80,34 @@
       // Copiar el enlace al hacer clic
       imgElement.addEventListener("click", () => {
         navigator.clipboard.writeText(window.location.href + image)
-          .then(() => alert("¡Enlace copiado al portapapeles!"))
+          .then(() => alert("¡Enlace de imagen copiado al portapapeles!"))
           .catch(err => console.error("Error al copiar:", err));
       });
 
-      gallery.appendChild(imgElement);
+      imageGallery.appendChild(imgElement);
     });
+
+    
+
+     // Galería de Videos
+     const videoGallery = document.getElementById("video-gallery");
+    videos.forEach(video => {
+      const videoElement = document.createElement("video");
+      videoElement.src = video;
+      videoElement.controls = true; // Controles de reproducción
+      videoElement.title = video;
+      videoElement.className = "gallery-item";
+
+      // Copiar el enlace al hacer clic
+      videoElement.addEventListener("click", () => {
+        navigator.clipboard.writeText(window.location.href + video)
+          .then(() => alert("¡Enlace de video copiado al portapapeles!"))
+          .catch(err => console.error("Error al copiar:", err));
+      });
+
+      videoGallery.appendChild(videoElement);
+    });
+
   </script>
 </body>
 </html>
