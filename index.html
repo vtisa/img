@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Image Library</h1>
+    <p>Click on an image to copy its URL.</p>
+  </header>
+  <main id="image-gallery">
+    <!-- Las imágenes se agregarán dinámicamente aquí -->
+  </main>
+  <footer>
+    <p>© 2025 Mi Biblioteca de Imágenes</p>
+  </footer>
+  <script>
+    // JavaScript para cargar automáticamente las imágenes
+    const images = [
+      "img/pareja/1.jpg",
+      "img/pareja/2.jpg",
+      "img/pareja/3.jpg",
+      "img/pareja/4.jpg",
+      "img/pareja/5.jpg",
+      "img/pareja/6.jpg",
+      "img/pareja/final.jpg",
+      "img/adorno.png",
+      "img/adornofin.png",
+      "img/anillo.png",
+      "img/avance.png",
+      "img/bcp.jpg",
+      "img/cerdo.png",
+      "img/corazon.png",
+      "img/especial1.png",
+      "img/especial2.png",
+      "img/iconomap.png",
+      "img/lateral1.png",
+      "img/lateral2.png",
+      "img/lluvia.png",
+      "img/play.png",
+      "img/plin.png",
+      "img/regalo.png",
+      "img/retroceso.png",
+      "img/sobre.png",
+      "img/social.png",
+      "img/yape.png",
+      "img/fondo.jpg" // Añade más imágenes aquí
+    ];
+
+    const gallery = document.getElementById("image-gallery");
+
+    images.forEach(image => {
+      const imgElement = document.createElement("img");
+      imgElement.src = image;
+      imgElement.alt = "Image";
+      imgElement.title = image;
+      imgElement.className = "gallery-item";
+
+      // Copiar el enlace al hacer clic
+      imgElement.addEventListener("click", () => {
+        navigator.clipboard.writeText(window.location.href + image)
+          .then(() => alert("¡Enlace copiado al portapapeles!"))
+          .catch(err => console.error("Error al copiar:", err));
+      });
+
+      gallery.appendChild(imgElement);
+    });
+  </script>
+</body>
+</html>
